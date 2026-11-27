@@ -3,6 +3,7 @@
  * Incluye datos de los últimos 12 meses para un negocio de belleza, marroquinería y accesorios
  */
 import { DataSource } from 'typeorm';
+import { entities as todasLasEntidades } from '../entities';
 import { config } from 'dotenv';
 import * as path from 'node:path';
 import * as bcrypt from 'bcryptjs';
@@ -51,18 +52,7 @@ const dataSource = new DataSource({
     username: process.env.DATABASE_USER || 'postgres',
     password: process.env.DATABASE_PASSWORD || 'postgres',
     database: process.env.DATABASE_NAME || 'sistema_gestion',
-    entities: [
-        User, RefreshToken, LoginAudit,
-        Category, Product, Brand,
-        SystemConfiguration, FiscalConfiguration, TaxType, PaymentMethodEntity,
-        CustomerCategory, Customer, CustomerAccount, AccountMovement,
-        ExpenseCategory, Expense,
-        IncomeCategory, Income,
-        Supplier, Purchase, PurchaseItem,
-        Sale, SaleItem, SalePayment, SaleTax, Invoice,
-        StockMovement,
-        CashRegister, CashMovement, CashRegisterTotals,
-    ],
+    entities: todasLasEntidades,
     synchronize: true,
     dropSchema: true,
 });

@@ -10,6 +10,7 @@ import { Loader2 } from 'lucide-react';
 import { useRouteRefresh } from '@/hooks/useRouteRefresh';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { isElectron } from '@/lib/utils';
+import { GolondrinaAsistente } from './GolondrinaAsistente';
 
 export function DashboardLayout() {
     const navigate = useNavigate();
@@ -58,6 +59,8 @@ export function DashboardLayout() {
 
     return (
         <div className="flex h-screen overflow-hidden bg-background">
+            {/* Golondrina: asistente que aprende de cada usuario (100% configurable) */}
+            <GolondrinaAsistente usuario={user?.username} />
             {/* Sidebar */}
             <Sidebar
                 user={user}
